@@ -1,4 +1,4 @@
-import Command, {Config, Server} from '../../base'
+import Command, {Server} from '../../base'
 
 export default class Get extends Command {
   static args = [{name: 'name', description: 'get your motd from a specific peer', required: false, default: ''}]
@@ -6,16 +6,10 @@ export default class Get extends Command {
   async run(): Promise<void> {
     const {args} = await this.parse(Get)
 
-    const motds = Config.get('motds') as any[]
-
     if (args.name) {
-      const names = motds.map(motd => motd.name) as string[]
-      if (!names.includes(args.name)) {
-        this.log(`The peer ${args.name} does not exist. To list your peers, use "remotd peers"`)
-        return
-      }
+      if (!this.assertIsExistingPeer(args.name)) return
 
-      const myMotdId = motds.find(motd => motd.name === args.name).myMotdId
+      const myMotdId = this.motds().find(motd => motd.name === args.name).myMotdId
       try {
         const {data} = await Server.get(`/motds/${myMotdId}`)
         this.log(`${args.name}: ${data.message}`)
@@ -29,6 +23,7 @@ export default class Get extends Command {
     try {
       const {data} = await Server.get('/motds')
       if (data) {
+        const motds = this.motds()
         for (const motd of data) {
           const name = motds.find(m => m.myMotdId === motd._id).name
           if (name) {

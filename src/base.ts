@@ -52,4 +52,41 @@ export default abstract class extends Command {
       this.log('[WARNING] Your user key is of an unsupported format. To generate a new one, use "remotd new-user"')
     }
   }
+
+  motds(): any[] {
+    return Config.get('motds') as any[]
+  }
+
+  names(): string[] {
+    return this.motds().map(motd => motd.name) as string[]
+  }
+
+  assertIsNewPeer(name: string): boolean {
+    if (!name) {
+      this.log('Name cannot be empty.')
+      return false
+    }
+
+    if (this.names().includes(name)) {
+      this.log(`A peer with the name "${name}" already exists.`)
+      return false
+    }
+
+    return true
+  }
+
+  assertIsExistingPeer(name: string): boolean {
+    if (!this.names().includes(name)) {
+      this.log(`The peer "${name}" does not exist. To list your peers, use "remotd peers".`)
+      return false
+    }
+
+    return true
+  }
+
+  pushMotd(name: string, myMotdId: string, friendMotdId: string): void {
+    const motds = this.motds()
+    motds.push({name, myMotdId, friendMotdId})
+    Config.set('motds', motds)
+  }
 }

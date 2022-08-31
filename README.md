@@ -29,9 +29,15 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
+* [`remotd clear-conf`](#remotd-clear-conf)
+* [`remotd get [NAME]`](#remotd-get-name)
 * [`remotd hello PERSON`](#remotd-hello-person)
 * [`remotd hello world`](#remotd-hello-world)
 * [`remotd help [COMMAND]`](#remotd-help-command)
+* [`remotd new-user`](#remotd-new-user)
+* [`remotd pair`](#remotd-pair)
+* [`remotd pair request`](#remotd-pair-request)
+* [`remotd peers`](#remotd-peers)
 * [`remotd plugins`](#remotd-plugins)
 * [`remotd plugins:install PLUGIN...`](#remotd-pluginsinstall-plugin)
 * [`remotd plugins:inspect PLUGIN...`](#remotd-pluginsinspect-plugin)
@@ -41,6 +47,29 @@ USAGE
 * [`remotd plugins:uninstall PLUGIN...`](#remotd-pluginsuninstall-plugin-1)
 * [`remotd plugins:uninstall PLUGIN...`](#remotd-pluginsuninstall-plugin-2)
 * [`remotd plugins update`](#remotd-plugins-update)
+* [`remotd set NAME`](#remotd-set-name)
+* [`remotd set-host URL`](#remotd-set-host-url)
+
+## `remotd clear-conf`
+
+```
+USAGE
+  $ remotd clear-conf
+```
+
+_See code: [dist/commands/clear-conf.ts](https://github.com/danerieber/remotd/blob/v0.0.0/dist/commands/clear-conf.ts)_
+
+## `remotd get [NAME]`
+
+```
+USAGE
+  $ remotd get [NAME]
+
+ARGUMENTS
+  NAME  get your motd from a specific peer
+```
+
+_See code: [dist/commands/get/index.ts](https://github.com/danerieber/remotd/blob/v0.0.0/dist/commands/get/index.ts)_
 
 ## `remotd hello PERSON`
 
@@ -101,6 +130,40 @@ DESCRIPTION
 ```
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v5.1.12/src/commands/help.ts)_
+
+## `remotd new-user`
+
+```
+USAGE
+  $ remotd new-user
+```
+
+_See code: [dist/commands/new-user.ts](https://github.com/danerieber/remotd/blob/v0.0.0/dist/commands/new-user.ts)_
+
+## `remotd pair`
+
+```
+USAGE
+  $ remotd pair
+```
+
+_See code: [dist/commands/pair/index.ts](https://github.com/danerieber/remotd/blob/v0.0.0/dist/commands/pair/index.ts)_
+
+## `remotd pair request`
+
+```
+USAGE
+  $ remotd pair request
+```
+
+## `remotd peers`
+
+```
+USAGE
+  $ remotd peers
+```
+
+_See code: [dist/commands/peers/index.ts](https://github.com/danerieber/remotd/blob/v0.0.0/dist/commands/peers/index.ts)_
 
 ## `remotd plugins`
 
@@ -331,4 +394,28 @@ FLAGS
 DESCRIPTION
   Update installed plugins.
 ```
+
+## `remotd set NAME`
+
+```
+USAGE
+  $ remotd set [NAME]
+
+ARGUMENTS
+  NAME  set a peer's motd
+```
+
+_See code: [dist/commands/set/index.ts](https://github.com/danerieber/remotd/blob/v0.0.0/dist/commands/set/index.ts)_
+
+## `remotd set-host URL`
+
+```
+USAGE
+  $ remotd set-host [URL]
+
+ARGUMENTS
+  URL  url of remotd server host
+```
+
+_See code: [dist/commands/set-host/index.ts](https://github.com/danerieber/remotd/blob/v0.0.0/dist/commands/set-host/index.ts)_
 <!-- commandsstop -->
