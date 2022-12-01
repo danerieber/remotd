@@ -20,7 +20,7 @@
     "@oclif/core": "^1.13.10",
     "@oclif/plugin-help": "^5",
     "@oclif/plugin-plugins": "^2.0.1",
-    "ajv": "^8.11.0",
+    "ajv": "^8.11.2",
     "axios": "^0.27.2",
     "conf": "^10.2.0"
   },
